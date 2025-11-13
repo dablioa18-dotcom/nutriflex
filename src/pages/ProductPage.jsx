@@ -19,11 +19,17 @@ export default function ProductPage({ onQuickBuy }) {
           {product.brand && <p className="mt-1 text-sm opacity-80">Marca: {product.brand}</p>}
           {product.isKit && <span className="mt-2 inline-block rounded bg-neutral-900 text-white px-2 py-1 text-xs">Kit</span>}
           <p className="mt-2">Categoria: {product.category}</p>
-          <div className="mt-4 flex items-baseline gap-3">
+          <div className="mt-4 flex items-center gap-3">
             {product.realPrice && product.realPrice > product.price ? (
               <>
                 <span className="text-lg line-through text-neutral-500">R$ {product.realPrice.toFixed(2)}</span>
                 <span className="text-2xl font-bold text-brand-red">R$ {product.price.toFixed(2)}</span>
+                {(() => {
+                  const pct = Math.round(100 - (product.price / product.realPrice) * 100);
+                  return pct > 0 ? (
+                    <span className="inline-flex items-center rounded bg-green-600 text-white px-2 py-0.5 text-xs">-{pct}%</span>
+                  ) : null;
+                })()}
               </>
             ) : (
               <span className="text-2xl font-bold text-brand-red">R$ {product.price.toFixed(2)}</span>

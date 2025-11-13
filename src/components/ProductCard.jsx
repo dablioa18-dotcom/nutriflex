@@ -29,11 +29,17 @@ export default function ProductCard({ product, onQuickBuy }) {
           ))}
           <span className="ml-1 text-black">(24)</span>
         </div>
-        <div className="mt-1 flex items-baseline gap-2">
+        <div className="mt-1 flex items-center gap-2">
           {product.realPrice && product.realPrice > product.price ? (
             <>
               <span className="text-sm line-through text-neutral-500">R$ {product.realPrice.toFixed(2)}</span>
               <span className="font-bold text-brand-red">R$ {product.price.toFixed(2)}</span>
+              {(() => {
+                const pct = Math.round(100 - (product.price / product.realPrice) * 100);
+                return pct > 0 ? (
+                  <span className="ml-1 inline-flex items-center rounded bg-green-600 text-white px-2 py-0.5 text-xs">-{pct}%</span>
+                ) : null;
+              })()}
             </>
           ) : (
             <span className="font-bold text-brand-red">R$ {product.price.toFixed(2)}</span>
