@@ -1,3 +1,18 @@
+IMG_PRODUTOS fica as img do produtos kkkk
+em src/componemtes fica as sessão de itens e tralala
+tá bem documentado
+
+voce colocar produtos no src/assents/data
+
+
+
+
+
+
+
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
